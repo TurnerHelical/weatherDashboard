@@ -1,0 +1,9 @@
+#submitButton{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.cityForm {
+    border-bottom: 1px solid black;
+    margin-bottom: 8px;
+}

@@ -15,21 +15,28 @@
     <header class="text-end bg-primary">
         <h1 class="p-5 text-light">Weather Dashboard</h1>
     </header>
-    <main class="container">
-        <aside class="col">
-            <h2 class="row">Search For A City:</h2>
-            <form>
+    <main class="row m-0">
+        <aside class="col-3 justify-content-start">
+            <h2>Search For A City:</h2>
+            <form class="cityForm">
                 <div class="mb-3">
-                  <label for="cityName" class="form-label">City Name</label>
+                  <label for="cityName" class="form-label"></label>
                   <input type="text" class="form-control" id="cityName">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+                  <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+                </div>
+            </form>
+            <div class="container" id="cityContainer"></div>
         </aside>
-        <section class="col">
-            <div class="row" id="currentWeather"></div>
-            <div class="row " id="5day"></div>
+        <section class="col-9 container">
+            <div class="row" id="currentWeather">
+                <div class="col"></div>
+            </div>
+            <div class="row" id="5day">
+                <div class="col"></div>
+            </div>
         </section>
     </main>
+    
 
 
 
