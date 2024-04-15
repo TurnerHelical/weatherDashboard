@@ -16,11 +16,18 @@ const formSubmitHandler = function (event) {
 //   alert('Please enter a valid City');
 // };
 // //fetch weather api data
+const getCurrentWeather = function (coords) {
+    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=f0bf82795e5d7afe9c785c5b5e558533&units=imperial`
+    fetch(apiUrl)
+    .then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data);
+})}})}
 // //fetch command to openweatherAI, api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-const getWeather = function (coords) {
+const getFutureWeather = function (coords) {
     console.log(coords);
-    const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=f0bf82795e5d7afe9c785c5b5e558533`
-    console.log(apiUrl);
+    const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=f0bf82795e5d7afe9c785c5b5e558533&units=imperial`
     fetch(apiUrl)
     .then(function (response) {
         if (response.ok) {
@@ -45,7 +52,8 @@ const getCityCoords = function (city) {
                             lat: (data[i].lat),
                             lon: (data[i].lon)
                         }
-                        getWeather(coords);
+                        getFutureWeather(coords);
+                        getCurrentWeather(coords)
                     }
                 })
             }
