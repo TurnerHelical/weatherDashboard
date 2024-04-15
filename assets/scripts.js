@@ -19,7 +19,7 @@ const formSubmitHandler = function (event) {
 //fetch weather api data
 //fetch command to openweatherAI, api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 const getWeather = function () {
-
+    
 }
 
 //another fetch command to get city lon and lat, http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
@@ -30,7 +30,7 @@ const getCityCoords = function (city) {
         .then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
+                getWeather()
             });
         }
     });
