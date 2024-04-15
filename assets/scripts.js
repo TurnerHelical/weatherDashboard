@@ -1,0 +1,15 @@
+//fetch weather api data
+    //fetch command to openweatherAI, api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+const getWeather = function(){
+
+}
+
+    //another fetch command to get city lon and lat, http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+const getCityCoords = function(city){
+    const apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=f0bf82795e5d7afe9c785c5b5e558533`
+    
+}
+//take data and create new elements 
+// add new elements to page
+//store searches into local storage
+//pull previous searches from local storage on page startup
