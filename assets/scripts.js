@@ -19,10 +19,16 @@ const formSubmitHandler = function (event) {
 // //fetch command to openweatherAI, api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 const getWeather = function (coords) {
     console.log(coords);
-    const apiUrl = `api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=f0bf82795e5d7afe9c785c5b5e558533`
+    const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=f0bf82795e5d7afe9c785c5b5e558533`
     console.log(apiUrl);
     fetch(apiUrl)
-        
+    .then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data);
+            }
+            //response.json().then(function (data) {
+)}})}
 
        
 
