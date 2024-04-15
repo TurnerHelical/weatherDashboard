@@ -6,35 +6,37 @@ const formSubmitHandler = function (event) {
     event.preventDefault();
   
     const city = cityInput.value.trim();
-  
-    if (city) {
-      getCityCoords(city);
-  
-      repoContainerEl.textContent = '';
-      cityInput.value = '';
-    } else {
-      alert('Please enter a valid City');
+    console.log(city);
+
+    getgetCityCoords(city);
     }
-  };
-//fetch weather api data
-//fetch command to openweatherAI, api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+    //   repoContainerEl.textContent = '';
+    //   cityInput.value = '';
+    // } else {
+    //   alert('Please enter a valid City');
+    // };
+// //fetch weather api data
+// //fetch command to openweatherAI, api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 const getWeather = function () {
-    
+    let coords = getCityCoords(coords)
+    console.log(coords);
 }
 
-//another fetch command to get city lon and lat, http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+// //another fetch command to get city lon and lat, http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 const getCityCoords = function (city) {
     const apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=f0bf82795e5d7afe9c785c5b5e558533`
 
     fetch(apiUrl)
-        .then(function (response) {
+    .then(function (response) {
         if (response.ok) {
-            response.json().then(function (data) {
-                getWeather()
-            });
-        }
-    });
-};
+          response.json().then(function (data) {
+            for (let i = 0; i < data.length; i++) {
+                const coords = {
+                    lat:(data[i].lat),
+                    lon:(data[i].lon)
+                }
+                return coords;
+          }})}})};
 
 //function to display error message if city not found
 //take data and create new elements
