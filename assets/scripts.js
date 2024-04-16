@@ -6,7 +6,7 @@ const formSubmitHandler = function (event) {
     event.preventDefault();
 
     const city = cityInput.value.trim();
-    console.log(city);
+    //console.log(city);
 
     getCityCoords(city);
 }
@@ -22,17 +22,16 @@ const getCurrentWeather = function (coords) {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     //put name of city, date, temp, wind speed, weather description and humidity into an object
                         const currentWeatherData = {
                             name: (data.name),
-                            date: (data.lon),
                             temp: (data.main.temp),
                             wind: (data.wind.speed),
                             humidity: (data.main.humidity),
                             weather: (data.weather),
                         }
-                        console.log(currentWeatherData)
+                        
                     })}})}
 
 // //fetch command to openweatherAI, api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
@@ -42,13 +41,24 @@ const getFutureWeather = function (coords) {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    
+                    console.log(data);
+                    let futureWeatherArray = []
+                    for (let i = 0; i < data.list.length; i++) {
+                        const futureWeatherData = {
+                            temp: (data.list[i].main.temp),
+                            wind: (data.list[i].wind.speed),
+                            humidity: (data.list[i].main.humidity),
+                            weather: (data.list[i].weather),
+                        }
+                        futureWeatherArray.push(futureWeatherData)
+                    }
+                    console.log(futureWeatherArray)
                 }
+ )}})}
                     //response.json().then(function (data) {
-                )
-            }
-        })
-}
+        // )}})
+        //     }
+ 
 
 
 
@@ -60,7 +70,7 @@ const getCityCoords = function (city) {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     for (let i = 0; i < data.length; i++) {
                         const coords = {
                             lat: (data[i].lat),
