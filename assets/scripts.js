@@ -15,7 +15,7 @@ const formSubmitHandler = function (event) {
 
 // //fetch weather api data
 const getCurrentWeather = function (coords) {
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=f0bf82795e5d7afe9c785c5b5e558533&units=imperial`
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=f0bf82795e5d7afe9c785c5b5e558533&units=imperial`
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
@@ -37,7 +37,7 @@ const getCurrentWeather = function (coords) {
 
 // //fetch command to openweatherAI, api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 const getFutureWeather = function (coords) {
-    const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&cnt=5&appid=f0bf82795e5d7afe9c785c5b5e558533&units=imperial`
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&cnt=5&appid=f0bf82795e5d7afe9c785c5b5e558533&units=imperial`
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
@@ -65,7 +65,7 @@ const getFutureWeather = function (coords) {
 
 // //another fetch command to get city lon and lat, http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 const getCityCoords = function (city) {
-    const apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=f0bf82795e5d7afe9c785c5b5e558533`
+    const apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=f0bf82795e5d7afe9c785c5b5e558533`
 
     fetch(apiUrl)
         .then(function (response) {
@@ -128,6 +128,10 @@ console.log(futureWeatherArray);
     futureWeatherCard.append(weatherInfo)
     futureWeatherContainer.append(futureWeatherCard);
 }}
+
+
+//save data to local storage and have tabs on side to pull up recently searched cities
+//have options show when page is refreshed
 
 //add event listener for city input
 cityFormEl.addEventListener('submit', formSubmitHandler);
