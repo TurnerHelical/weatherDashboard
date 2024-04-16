@@ -19,25 +19,38 @@ const formSubmitHandler = function (event) {
 const getCurrentWeather = function (coords) {
     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=f0bf82795e5d7afe9c785c5b5e558533&units=imperial`
     fetch(apiUrl)
-    .then(function (response) {
-        if (response.ok) {
-            response.json().then(function (data) {
-                console.log(data);
-})}})}
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (data) {
+                    console.log(data);
+                    //put name of city, date, temp, wind speed, weather description and humidity into an object
+                        const currentWeatherData = {
+                            name: (data.name),
+                            date: (data.lon),
+                            temp: (data.main.temp),
+                            wind: (data.wind.speed),
+                            humidity: (data.main.humidity),
+                            weather: (data.weather),
+                        }
+                        console.log(currentWeatherData)
+                    })}})}
+
 // //fetch command to openweatherAI, api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 const getFutureWeather = function (coords) {
-    console.log(coords);
     const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=f0bf82795e5d7afe9c785c5b5e558533&units=imperial`
     fetch(apiUrl)
-    .then(function (response) {
-        if (response.ok) {
-            response.json().then(function (data) {
-                console.log(data);
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (data) {
+                    
+                }
+                    //response.json().then(function (data) {
+                )
             }
-            //response.json().then(function (data) {
-)}})}
+        })
+}
 
-       
+
 
 // //another fetch command to get city lon and lat, http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 const getCityCoords = function (city) {
@@ -47,6 +60,7 @@ const getCityCoords = function (city) {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
+                    console.log(data);
                     for (let i = 0; i < data.length; i++) {
                         const coords = {
                             lat: (data[i].lat),
@@ -60,8 +74,11 @@ const getCityCoords = function (city) {
         })
 };
 
-//function to display error message if city not found
 //take data and create new elements
+const displayWeather = function () {
+
+}
+
 // add new elements to page
 //store searches into local storage
 //pull previous searches from local storage on page startup
