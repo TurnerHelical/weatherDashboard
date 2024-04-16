@@ -29,7 +29,7 @@ const getCurrentWeather = function (coords) {
                         humidity: (data.main.humidity),
                         weather: (data.weather),
                     }
-                    displayWeather(currentWeatherData)
+                    displayCurrentWeather(currentWeatherData)
                 })
             }
         })
@@ -53,10 +53,8 @@ const getFutureWeather = function (coords) {
                         }
                         futureWeatherArray.push(futureWeatherData)
                     }
-                    console.log(futureWeatherArray)
-                    return futureWeatherArray
-                }
-                )
+                    displayFutureWeather(futureWeatherArray)
+            })
             }
         })
 }
@@ -86,21 +84,49 @@ const getCityCoords = function (city) {
 };
 
 //take data and create new elements
-const displayWeather = function (currentWeatherData) {
+const displayCurrentWeather = function (currentWeatherData) {
+
+    $(currentWeatherContainer).html("");
+
     console.log(currentWeatherData);
     const weatherIcon = document.createElement('img')
     $(weatherIcon).attr('src',`https://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}@2x.png`)
+
     const currentWeatherCard = document.createElement('div');
+
     const heading = document.createElement('h2')
-    heading.setAttribute('class','test')
+    $(heading).attr('class','test')
     $(heading).text(`${currentWeatherData.name}`).append(weatherIcon)
+
+    const weatherInfo = document.createElement('p')
+    $(weatherInfo).html(`Temperature: ${currentWeatherData.temp}°<br /> Humidity: ${currentWeatherData.humidity}%<br /> Wind: ${currentWeatherData.wind} mph<br /> Weather: ${currentWeatherData.weather[0].description}`)
+
     currentWeatherCard.append(heading)
+    currentWeatherCard.append(weatherInfo)
     currentWeatherContainer.append(currentWeatherCard);
 }
-https://openweathermap.org/img/wn/10d@2x.png
-// add new elements to page
-//store searches into local storage
-//pull previous searches from local storage on page startup
+
+const displayFutureWeather = function (futureWeatherArray) {
+console.log(futureWeatherArray);
+    // $(currentWeatherContainer).html("");
+
+    // console.log(currentWeatherData);
+    // const weatherIcon = document.createElement('img')
+    // $(weatherIcon).attr('src',`https://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}@2x.png`)
+
+    // const currentWeatherCard = document.createElement('div');
+
+    // const heading = document.createElement('h2')
+    // $(heading).attr('class','test')
+    // $(heading).text(`${currentWeatherData.name}`).append(weatherIcon)
+
+    // const weatherInfo = document.createElement('p')
+    // $(weatherInfo).html(`Temperature: ${currentWeatherData.temp}°<br /> Humidity: ${currentWeatherData.humidity}%<br /> Wind: ${currentWeatherData.wind} mph<br /> Weather: ${currentWeatherData.weather[0].description}`)
+
+    // currentWeatherCard.append(heading)
+    // currentWeatherCard.append(weatherInfo)
+    // currentWeatherContainer.append(currentWeatherCard);
+}
 
 //add event listener for city input
 cityFormEl.addEventListener('submit', formSubmitHandler);
