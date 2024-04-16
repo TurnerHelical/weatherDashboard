@@ -87,9 +87,17 @@ const getCityCoords = function (city) {
 
 //take data and create new elements
 const displayWeather = function (currentWeatherData) {
-    
+    console.log(currentWeatherData);
+    const weatherIcon = document.createElement('img')
+    $(weatherIcon).attr('src',`https://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}@2x.png`)
+    const currentWeatherCard = document.createElement('div');
+    const heading = document.createElement('h2')
+    heading.setAttribute('class','test')
+    $(heading).text(`${currentWeatherData.name}`).append(weatherIcon)
+    currentWeatherCard.append(heading)
+    currentWeatherContainer.append(currentWeatherCard);
 }
-
+https://openweathermap.org/img/wn/10d@2x.png
 // add new elements to page
 //store searches into local storage
 //pull previous searches from local storage on page startup
